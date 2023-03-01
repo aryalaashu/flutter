@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'BookingForm.dart';
+import 'Profile.dart';
+import 'Setting.dart';
 
 class FutsalBookingDashboard extends StatelessWidget {
   final List<Futsal> futsals = [    Futsal(      name: 'Prime Futsal', location: 'Kathmandu', image:  "assets/images/court1.webp",    ),
-    Futsal(      name: 'Bhrikutimandap Futsal',      location: 'Bhrikutimandap Funpark',      image: "assets/images/court2.jpg",    ),    Futsal(      name: 'Futsal Arena',      location: 'Bhaktapur',      image: "assets/images/court3.webp",    ),    Futsal(      name: 'Lakeside FUtsal',      location: 'Pokhara',      image: "assets/images/court4.jpg",    ),    Futsal(      name: 'Bhudda Futsal',      location: 'Chitwan',      image: "assets/images/court5.jpg",    ),Futsal(      name: 'Bimali Futsal',      location: 'Jhapa',      image:  "assets/images/court6.jpg",    ),  ];
+    Futsal(      name: 'Bhrikutimandap Futsal',      location: 'Bhrikutimandap Funpark',      image: "assets/images/court2.jpg",    ),    Futsal(      name: 'Futsal Arena',      location: 'Bhaktapur',      image: "assets/images/court3.webp",    ),    Futsal(      name: 'Lakeside Futsal',      location: 'Pokhara',      image: "assets/images/court4.jpg",    ),    Futsal(      name: 'Bhudda Futsal',      location: 'Chitwan',      image: "assets/images/court5.jpg",    ),Futsal(      name: 'Bimali Futsal',      location: 'Jhapa',      image:  "assets/images/court6.jpg",    ),  ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +84,9 @@ class FutsalBookingDashboard extends StatelessWidget {
           ],
         ),
       ),
+
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -99,8 +102,30 @@ class FutsalBookingDashboard extends StatelessWidget {
             label: 'Settings',
           ),
         ],
+        elevation: 8.0, // Add elevation to give it a shadow effect
+        selectedItemColor: Colors.blue, // Change the selected item color
+        unselectedItemColor: Colors.grey, // Change the unselected item color
+        onTap: (int index) { // Add onTap event to navigate to respective pages
+          switch(index) {
+            case 0:
+            // Do nothing as we are already on the home page
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+              break;
+          }
+        },
       ),
-    );
+      );
   }
 }
 
@@ -109,7 +134,7 @@ class FutsalBookingDashboard extends StatelessWidget {
 class Futsal {
   final String name;
   final String location;
-  final String image; // new field to store image asset path or URL
+  final String image;
 
   Futsal({
     required this.name,

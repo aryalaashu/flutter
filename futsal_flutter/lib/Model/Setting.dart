@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:futsal_flutter/Model/Dashboard.dart';
+import 'package:futsal_flutter/Model/Profile.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -80,6 +82,46 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        elevation: 8.0, // Add elevation to give it a shadow effect
+        selectedItemColor: Colors.blue, // Change the selected item color
+        unselectedItemColor: Colors.grey, // Change the unselected item color
+        onTap: (int index) { // Add onTap event to navigate to respective pages
+          switch(index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FutsalBookingDashboard()),
+              );
+              break;
+            case 1:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+              break;
+            case 2:
+
+              break;
+          }
+        },
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:futsal_flutter/Model/Dashboard.dart';
+import 'package:futsal_flutter/Model/Setting.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -49,7 +51,7 @@ class ProfilePage extends StatelessWidget {
                   SizedBox(height: 16.0),
                   Center(
                     child: Text(
-                      'John Doe',
+                      'Messi',
                       style: TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
@@ -96,6 +98,46 @@ class ProfilePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        elevation: 8.0, // Add elevation to give it a shadow effect
+        selectedItemColor: Colors.blue, // Change the selected item color
+        unselectedItemColor: Colors.grey, // Change the unselected item color
+        onTap: (int index) { // Add onTap event to navigate to respective pages
+          switch(index) {
+            case 0:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FutsalBookingDashboard()),
+              );
+              break;
+            case 1:
+
+              break;
+            case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+              break;
+          }
+        },
       ),
     );
   }
